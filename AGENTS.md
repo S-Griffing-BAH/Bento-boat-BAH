@@ -1,12 +1,12 @@
 # Instructions for AI Agents
 
-> **You are Claude Code, or any other AI assistant working in the Serenity-UAV repository. Before proceeding with any task, read this file and the project instructions.**
+> **For any AI assistant working in the Serenity-UAV repository,b efore proceeding with any task, read this file and the project instructions.**
 
 ## Authoritative Source
 
-The **canonical project instructions and standards are in [`CLAUDE.md`](CLAUDE.md)** (root directory). You **must** follow all standards, conventions, and policies documented there.
+The **canonical project instructions and standards are in this file. You **must** follow all standards, conventions, and policies documented here.
 
-**Every design specification, code change, commit message, and piece of documentation must comply with the standards in `CLAUDE.md`.**
+**Every design specification, code change, commit message, and piece of documentation must comply with these standards.**
 
 ## Authenticity
 
@@ -20,16 +20,7 @@ The **canonical project instructions and standards are in [`CLAUDE.md`](CLAUDE.m
 
 ## Scope-Specific Guidance
 
-For work within a specific subsystem, also consult the **federated `CLAUDE.md` file in that folder**. These provide additional detail and workflows tailored to that subsystem:
-
-- **[`airframe/CLAUDE.md`](airframe/CLAUDE.md)** — Structural design, CAD/3D modeling, hull-frame coordinate system, fabrication standards, STL validation
-- **[`avionics/CLAUDE.md`](avionics/CLAUDE.md)** — KiCad PCB design, capes, avionics stacks, security, communications protocols
-- **[`docs/CLAUDE.md`](docs/CLAUDE.md)** — Documentation standards, standards vetting policy, references management
-- **[`gcs/CLAUDE.md`](gcs/CLAUDE.md)** — Ground Control Station (Malcolm), command and control, telemetry
-- **[`tools/CLAUDE.md`](tools/CLAUDE.md)** — Build automation, bake tool, Blender pipeline, SCAD generation
-- **[`current-specification/CLAUDE.md`](current-specification/CLAUDE.md)** — Active design specifications, revision numbering, traceability
-- **[`graphical-build-guide/CLAUDE.md`](graphical-build-guide/CLAUDE.md)** — Phased build instructions, fabrication checklists, troubleshooting
-- **[`deferred/CLAUDE.md`](deferred/CLAUDE.md)** — Phase 11+ work, planned upgrades, design decision history
+For work within a specific subsystem, also consult the **federated `AGENTS.md` file in that folder**. These provide additional detail and workflows tailored to that subsystem:
 
 **Subordinate files are authoritative for their scope.** If a subordinate file contradicts the root file, follow the subordinate.
 
@@ -41,7 +32,7 @@ For work within a specific subsystem, also consult the **federated `CLAUDE.md` f
 - 4-space indenting throughout
 - Verbose comments in strict conformity to each language
 - Use secure coding practices — avoid command injection, XSS, SQL injection, OWASP top 10 vulnerabilities
-- All code must pass strict linting rules
+- All code must cleanly pass all security and linting rules prior to commit
 
 ### Documentation
 
@@ -103,40 +94,30 @@ For work within a specific subsystem, also consult the **federated `CLAUDE.md` f
   )"
   ```
 
-### Coordinate System (Hull Frame)
-
-**All design artifacts use the single validated hull frame:**
-
-- **X** = positive port (left)
-- **Y** = positive aft (back)  
-- **Z** = positive dorsal (up)
-- **Origin** = the SerenityAssembly.FCStd world origin
-
-As of R1 (2026-06-11), placements are **baked into primary STL vertex data** via `tools/bake_hull_frame.py`. Primary components import with identity placement.
-
 ## Before You Act
 
-1. **Read `CLAUDE.md`** in full before starting any task
-2. **Check for subordinate CLAUDE.md** in the target folder
+1. **Read `AGENTS.md`** in full before starting any task
+2. **Check for subordinate AGENTS.md** in the target folder
 3. **Verify all standards citations** against `REFERENCES.md` before using them
-4. **Check `TODO.md`** for context on ongoing work
+4. **Check Root and applicable subsystem `TODO.md`** for context on ongoing work
 5. **Review git history** for recent commits and patterns
 
 ## When Adding New Work
 
-1. Add tracking items to `TODO.md` as subtasks in the appropriate section
-2. Update `PROJECT_INDEX.md` when adding new active files
-3. Update `REFERENCES.md` when adding standards citations
-4. Cite applicable standards using REF-IDs
-5. Include commit messages explaining the **why**, not just the **what**
+1. Add tracking items to `TODO.md` as subtasks in the appropriate section.
+2. Root level `TODO.md` has 1 line summary checklist items.  Each subsystem has its own expanded `TODO.md` with details and sub-tasks of each root item.
+3. Update `PROJECT_INDEX.md` when adding new active files
+4. Update `REFERENCES.md` when adding standards citations
+5. Cite applicable standards using REF-IDs
+6. Include commit messages explaining the **why**, not just the **what**
 
 ## Conflict Resolution
 
 **If you encounter conflicting guidance:**
 
-1. Root CLAUDE.md (project-wide) > Subordinate CLAUDE.md (scope-specific)
-1.1. The subordinate CLAUDE.md guidance is authoritative unless excluded by the root CLAUDE.md.
-1.2 All conflicts between Root and Subordinate CLAUDE.md **shall** be immediately be brought to the user's attention for adjudication.  No work will procede until adjudication is received.  
+1. Root AGENTS.md (project-wide) > Subordinate CLAUDE.md (scope-specific)
+1.1. The subordinate AGENTS.md guidance is authoritative unless excluded by the root AGENTS.md.
+1.2 All conflicts between Root and Subordinate AGENTS.md **shall** be immediately be brought to the user's attention for adjudication.  No work will procede until adjudication is received.  
 2. REFERENCES.md (verified standards) > comments or assumptions
 3. Actual code/model state > documentation (if they diverge, update the docs to match reality and investigate why they diverged)
 
